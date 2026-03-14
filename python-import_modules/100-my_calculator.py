@@ -8,19 +8,14 @@ if __name__ == "__main__":
         sys.exit(1)
 
     a = int(sys.argv[1])
-    operator = sys.argv[2]
+    op = sys.argv[2]
     b = int(sys.argv[3])
 
-    if operator == "+":
-        result = add(a, b)
-    elif operator == "-":
-        result = sub(a, b)
-    elif operator == "*":
-        result = mul(a, b)
-    elif operator == "/":
-        result = div(a, b)
-    else:
+    ops = {"+": add, "-": sub, "*": mul, "/": div}
+
+    if op not in ops:
         print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
 
-    print("{} {} {} = {}".format(a, operator, b, result))
+    result = ops[op](a, b)
+    print("{} {} {} = {}".format(a, op, b, result))

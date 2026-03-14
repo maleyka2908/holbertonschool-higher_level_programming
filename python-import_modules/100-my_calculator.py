@@ -18,4 +18,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     result = ops[op](a, b)
-    print("{} {} {} = {}".format(a, op, b, result))
+    print("{} {} {} = {}".format(a, op, b, result)) 

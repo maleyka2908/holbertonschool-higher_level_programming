@@ -18,10 +18,7 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    # İşarələri təyin edirik
     chars = [".", "?", ":"]
-    
-    # Textin əvvəlində və sonundakı lazımsız boşluqları təmizləyirik
     i = 0
     while i < len(text) and text[i] == ' ':
         i += 1

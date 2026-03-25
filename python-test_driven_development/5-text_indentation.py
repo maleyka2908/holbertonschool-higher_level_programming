@@ -18,18 +18,14 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    # Xüsusi simvollar
     special_chars = ".?:"
-
     i = 0
-    # Mətnin əvvəlindəki boşluqları təmizləyirik
-    text = text.strip(" ")
+    text = text.strip()
 
     while i < len(text):
         print(text[i], end="")
         if text[i] in special_chars:
             print("\n")
-            # Simvoldan sonra gələn boşluqları keçirik
             i += 1
             while i < len(text) and text[i] == " ":
                 i += 1

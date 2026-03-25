@@ -15,10 +15,15 @@ def add_integer(a, b=98):
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
 
-    # NaN və Infinity üçün əlavə qorunma (ValueError/OverflowError-un qarşısını almaq üçün)
-    if a != a or a == float('inf') or a == float('-inf'):
+    # NaN, Infinity və ya Overflow yarada biləcək çox böyük float yoxlaması
+    try:
+        a = int(a)
+    except (ValueError, OverflowError):
         raise TypeError("a must be an integer")
-    if b != b or b == float('inf') or b == float('-inf'):
+
+    try:
+        b = int(b)
+    except (ValueError, OverflowError):
         raise TypeError("b must be an integer")
 
-    return int(a) + int(b)
+    return a + b

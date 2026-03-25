@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 """
-This module provides a function that indents text.
-Prints a text with 2 new lines after each of these characters: ., ? and :
+This module provides a function that prints a text with 2 new lines
+after each of these characters: '.', '?' and ':'.
 """
 
 
 def text_indentation(text):
     """
-    Prints a text with 2 new lines after each of '.', '?' and ':'.
+    Prints a text with 2 new lines after each '.', '?' and ':'.
 
     Args:
-        text (str): The text to be printed.
+        text: The string to print.
 
     Raises:
         TypeError: If text is not a string.
@@ -18,16 +18,21 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    special_chars = ".?:"
+    # İşarələri təyin edirik
+    chars = [".", "?", ":"]
+    
+    # Textin əvvəlində və sonundakı lazımsız boşluqları təmizləyirik
     i = 0
-    text = text.strip()
+    while i < len(text) and text[i] == ' ':
+        i += 1
 
     while i < len(text):
         print(text[i], end="")
-        if text[i] in special_chars:
-            print("\n")
+        if text[i] in chars or text[i] == "\n":
+            if text[i] in chars:
+                print("\n")
             i += 1
-            while i < len(text) and text[i] == " ":
+            while i < len(text) and text[i] == ' ':
                 i += 1
             continue
         i += 1

@@ -31,12 +31,13 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
+    # Hər şeyi böl, inf/nan qalacaq, finite ədədləri round et
     result = []
     for row in matrix:
         new_row = []
         for x in row:
             val = x / div
-            if math.isfinite(val):
+            if not math.isnan(val) and not math.isinf(val):
                 val = round(val, 2)
             new_row.append(val)
         result.append(new_row)

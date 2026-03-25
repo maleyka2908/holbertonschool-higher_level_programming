@@ -13,8 +13,9 @@ The ``2-matrix_divided`` module
     [[0.5, inf], [1.5, 2.0]]
 
     >>> matrix_divided([[1, float('nan')], [3, 4]], float('inf'))
-    [[0.0, nan], [0.0, 0.0]]
+    [[0.5, nan], [1.5, 2.0]]
 
+Missing arguments:
     >>> matrix_divided([[1, 2]])
     Traceback (most recent call last):
         ...
@@ -25,6 +26,7 @@ The ``2-matrix_divided`` module
         ...
     TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
 
+Errors:
     >>> matrix_divided([[1, 2], [3, "4"]], 2)
     Traceback (most recent call last):
         ...

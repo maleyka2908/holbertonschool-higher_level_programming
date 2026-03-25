@@ -15,7 +15,7 @@ def add_integer(a, b=98):
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
 
-    # NaN və Infinity yoxlaması (çünki int() bunları çevirə bilmir)
+    # NaN və Infinity (Sonsuzluq) yoxlaması
     if a != a or a == float('inf') or a == float('-inf'):
         raise TypeError("a must be an integer")
     if b != b or b == float('inf') or b == float('-inf'):

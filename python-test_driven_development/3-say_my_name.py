@@ -1,20 +1,19 @@
 #!/usr/bin/python3
 """
 This module provides a function that prints a name.
-The function ensures both first and last names are strings.
 """
 
 
 def say_my_name(first_name, last_name=""):
     """
-    Prints "My name is <first name> <last name>".
+    Prints 'My name is <first name> <last name>'.
 
     Args:
-        first_name: The first name (string).
-        last_name: The last name (string), defaults to empty.
+        first_name: The first name (must be a string).
+        last_name: The last name (must be a string, defaults to empty).
 
     Raises:
-        TypeError: If either first_name or last_name is not a string.
+        TypeError: If first_name or last_name are not strings.
     """
     if not isinstance(first_name, str):
         raise TypeError("first_name must be a string")

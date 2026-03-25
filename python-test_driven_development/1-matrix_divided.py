@@ -2,7 +2,7 @@
 """
 Module for matrix_divided method.
 """
-
+import math
 
 def matrix_divided(matrix, div):
     """
@@ -17,7 +17,7 @@ def matrix_divided(matrix, div):
         if not isinstance(row, list) or len(row) == 0:
             raise TypeError(msg)
         for x in row:
-            if type(x) not in [int, float]:
+            if not isinstance(x, (int, float)):
                 raise TypeError(msg)
 
     row_size = len(matrix[0])
@@ -25,10 +25,19 @@ def matrix_divided(matrix, div):
         if len(row) != row_size:
             raise TypeError("Each row of the matrix must have the same size")
 
-    if type(div) not in [int, float]:
+    if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    return [[round(x / div, 2) for x in row] for row in matrix]
+    result = []
+    for row in matrix:
+        new_row = []
+        for x in row:
+            val = x / div
+            if math.isfinite(val):
+                val = round(val, 2)
+            new_row.append(val)
+        result.append(new_row)
+    return result

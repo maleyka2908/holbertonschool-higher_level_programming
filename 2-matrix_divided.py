@@ -21,6 +21,7 @@ def matrix_divided(matrix, div):
     Returns:
         list: A new matrix with elements divided and rounded to 2 decimal places.
     """
+    import math
 
     # Check if matrix is a list and not empty
     msg = "matrix must be a matrix (list of lists) of integers/floats"
@@ -35,7 +36,8 @@ def matrix_divided(matrix, div):
                 raise TypeError(msg)
 
     # Check if all rows have the same size
-    if not all(len(row) == len(matrix[0]) for row in matrix):
+    row_len = len(matrix[0])
+    if not all(len(row) == row_len for row in matrix):
         raise TypeError("Each row of the matrix must have the same size")
 
     # Check if div is a number

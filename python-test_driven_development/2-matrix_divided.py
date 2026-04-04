@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-This module provides a function that divides all elements of a matrix.
-"""
+"""Module that divides all elements of a matrix."""
 
 
 def matrix_divided(matrix, div):
@@ -18,10 +16,10 @@ def matrix_divided(matrix, div):
             if not isinstance(val, (int, float)):
                 raise TypeError(msg)
 
-    if not all(len(row) == len(matrix[0]) for row in matrix):
-        raise TypeError(
-            "Each row of the matrix must have the same size"
-        )
+    row_len = len(matrix[0])
+    for row in matrix:
+        if len(row) != row_len:
+            raise TypeError("matrix must have each row with the same size")
 
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
@@ -29,11 +27,4 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    new_matrix = []
-    for row in matrix:
-        new_row = []
-        for val in row:
-            new_row.append(round(val / div, 2))
-        new_matrix.append(new_row)
-
-    return new_matrix
+    return [[round(val / div, 2) for val in row] for row in matrix]

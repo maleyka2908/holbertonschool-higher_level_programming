@@ -1,23 +1,46 @@
-Test matrix with rows of different sizes:
->>> matrix = [[1, 2], [3, 4, 5]]
+The `matrix_divided` function
+================================
+
+Importing the function:
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Basic usage:
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+Testing for non-rectangular matrix:
+>>> matrix = [[1, 2, 3], [4, 5]]
 >>> matrix_divided(matrix, 3)
 Traceback (most recent call last):
     ...
 TypeError: matrix must have each row with the same size
 
-Test division by infinity (inf):
+Testing division by infinity:
 >>> matrix = [[1, 2], [3, 4]]
 >>> matrix_divided(matrix, float('inf'))
 [[0.0, 0.0], [0.0, 0.0]]
 
-Test missing one argument:
->>> matrix_divided([[1, 2], [3, 4]])
+Testing for missing one argument:
+>>> matrix_divided([[1, 2]])
 Traceback (most recent call last):
     ...
 TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
-Test missing two arguments:
+Testing for missing two arguments:
 >>> matrix_divided()
 Traceback (most recent call last):
     ...
 TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Testing for div being 0:
+>>> matrix_divided([[1, 2]], 0)
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
+
+Testing for non-number div:
+>>> matrix_divided([[1, 2]], "2")
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number

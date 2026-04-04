@@ -21,21 +21,17 @@ def matrix_divided(matrix, div):
     Returns:
         list: A new matrix with results rounded to 2 decimal places.
     """
-    # Mesajı "list of lists" olaraq dəyişdik
     msg = "matrix must be a matrix (list of lists) of integers/floats"
 
-    if not isinstance(matrix, list) or not matrix:
-        raise TypeError(msg)
-
-    if not all(isinstance(row, list) for row in matrix):
-        raise TypeError(msg)
-
-    if len(matrix[0]) == 0:
+    if not isinstance(matrix, list) or len(matrix) == 0:
         raise TypeError(msg)
 
     for row in matrix:
-        if not all(isinstance(val, (int, float)) for val in row):
+        if not isinstance(row, list) or len(row) == 0:
             raise TypeError(msg)
+        for val in row:
+            if not isinstance(val, (int, float)):
+                raise TypeError(msg)
 
     if not all(len(row) == len(matrix[0]) for row in matrix):
         raise TypeError("Each row of the matrix must have the same size")

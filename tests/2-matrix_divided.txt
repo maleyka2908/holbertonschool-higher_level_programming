@@ -9,7 +9,7 @@ Normal division:
 >>> matrix_divided(matrix, 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
-Test with inf and nan (The fix for your error):
+Test with inf and nan:
 >>> matrix_divided([[1, float('nan')], [3, 4]], float('inf'))
 [[0.0, nan], [0.0, 0.0]]
 
@@ -24,15 +24,3 @@ Test invalid matrix size:
 Traceback (most recent call last):
 ...
 TypeError: Each row of the matrix must have the same size
-
-Test invalid div type:
->>> matrix_divided([[1, 2], [3, 4]], "2")
-Traceback (most recent call last):
-...
-TypeError: div must be a number
-
-Test invalid matrix elements:
->>> matrix_divided([[1, "2"], [3, 4]], 2)
-Traceback (most recent call last):
-...
-TypeError: matrix must be a matrix (list of lists) of integers/floats

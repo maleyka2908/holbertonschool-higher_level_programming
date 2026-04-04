@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 This module provides a function that divides all elements of a matrix.
-It validates the matrix structure, element types, and the divisor.
 """
 
 
@@ -11,46 +10,35 @@ def matrix_divided(matrix, div):
 
     Args:
         matrix: A list of lists containing integers or floats.
-        div: The number (int or float) to divide the matrix elements by.
+        div: The number to divide the matrix elements by.
 
     Returns:
         A new matrix with the results rounded to 2 decimal places.
-
-    Raises:
-        TypeError: If matrix is not a list of lists of ints/floats.
-        TypeError: If rows of the matrix are not the same size.
-        TypeError: If div is not an int or float.
-        ZeroDivisionError: If div is 0.
     """
-    if not isinstance(div, (int, float)):
-        raise TypeError("div must be a number")
-    if div == 0:
-        raise ZeroDivisionError("division by zero")
+    msg = "matrix must be a matrix (list of lists) of integers/floats"
 
-    msg_type = "matrix must be a matrix (list of lists) of integers/floats"
-    msg_size = "Each row of the matrix must have the same size"
-
-    if not isinstance(matrix, list) or len(matrix) == 0:
-        raise TypeError(msg_type)
+    # 1. Matrix validation (Type and structure)
+    if not isinstance(matrix, list) or matrix == [] or not isinstance(matrix[0], list):
+        raise TypeError(msg)
 
     for row in matrix:
         if not isinstance(row, list):
-            raise TypeError(msg_type)
+            raise TypeError(msg)
         for element in row:
             if not isinstance(element, (int, float)):
-                raise TypeError(msg_type)
+                raise TypeError(msg)
 
-    row_length = len(matrix[0])
-    for row in matrix:
-        if len(row) != row_length:
-            raise TypeError(msg_size)
+    # 2. Row size validation
+    if not all(len(row) == len(matrix[0]) for row in matrix):
+        raise TypeError("Each row of the matrix must have the same size")
 
-    new_matrix = []
-    for row in matrix:
-        new_row = []
-        for element in row:
-            new_element = round(element / div, 2)
-            new_row.append(new_element)
-        new_matrix.append(new_row)
+    # 3. Divisor validation (Type)
+    if not isinstance(div, (int, float)):
+        raise TypeError("div must be a number")
 
-    return new_matrix
+    # 4. Division by zero validation
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+
+    # 5. Matrix division and rounding
+    return [[round(element / div, 2) for element in row] for row in matrix]

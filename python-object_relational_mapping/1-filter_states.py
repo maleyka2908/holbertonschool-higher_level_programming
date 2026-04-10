@@ -16,7 +16,9 @@ if __name__ == "__main__":
         db=sys.argv[3]
     )
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%'                    ORDER BY states.id ASC")
+    # SQL sorğusunu sətir limitini aşmamaq üçün aşağıdakı kimi bölürük
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%'"
+                   " ORDER BY states.id ASC")
     query_rows = cursor.fetchall()
     for row in query_rows:
         print(row)

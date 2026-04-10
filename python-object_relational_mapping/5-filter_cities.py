@@ -21,10 +21,7 @@ if __name__ == "__main__":
              ORDER BY cities.id ASC"
     cursor.execute(query, (sys.argv[4],))
     query_rows = cursor.fetchall()
-    
-    # Şəhər adlarını siyahıya yığıb vergüllə birləşdiririk
     cities = [row[0] for row in query_rows]
     print(", ".join(cities))
-    
     cursor.close()
     db.close()

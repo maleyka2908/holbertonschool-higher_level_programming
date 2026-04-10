@@ -67,7 +67,7 @@ class Rectangle:
 
         rect_str = ""
         for i in range(self.__height):
-            # We use str(self.print_symbol) to handle cases where it's a list/etc
+            # Convert to string to handle lists/etc
             rect_str += (str(self.print_symbol) * self.__width)
             if i < self.__height - 1:
                 rect_str += "\n"

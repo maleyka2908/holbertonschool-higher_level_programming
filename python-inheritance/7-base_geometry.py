@@ -6,21 +6,21 @@ This module defines a BaseGeometry class with validation methods.
 
 class BaseGeometry:
     """
-    A class representing base geometry with an area and validation methods.
+    A class representing base geometry.
     """
 
     def area(self):
         """
-        Raises an Exception indicating that the method is not implemented.
+        Raises an Exception because the method is not implemented.
         """
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
         """
-        Validates that value is a positive integer.
+        Validates the value as a positive integer.
 
         Args:
-            name (str): The name of the parameter (always a string).
+            name (str): The name of the parameter.
             value (int): The value to validate.
 
         Raises:

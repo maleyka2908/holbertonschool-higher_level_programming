@@ -1,1 +1,1 @@
-My SQL more queries project
+Project description for Python Object Relational Mapping

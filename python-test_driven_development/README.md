@@ -1,2 +1,3 @@
 # Python - Test Driven Development
-## Task 1: Matrix Divided
+
+This project focuses on the importance of testing code using `doctest`.
